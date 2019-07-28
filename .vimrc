@@ -8,10 +8,12 @@ set path+=**
 set mouse=a
 set visualbell t_vb=
 set guifont=IBM\ Plex\ Mono:h14
+set guioptions -=m
+set guioptions -=T
 
 if $TERM == "xterm" || $TERM == "screen"
-  set t_Co=256
-  set t_ut=
+	set t_Co=256
+	set t_ut=
 endif
 
 syntax on
