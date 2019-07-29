@@ -11,6 +11,7 @@ set guifont=IBM\ Plex\ Mono:h14
 set guioptions -=m
 set guioptions -=T
 set encoding=utf-8
+set backspace=indent,eol,start
 
 if $TERM == "xterm" || $TERM == "screen"
 	set t_Co=256
@@ -39,6 +40,7 @@ function! g:Breakpoint()
   endif
 endfunction
 
+"
 nnoremap <C-\> :NERDTreeToggle<CR>
 nnoremap ,break :call Breakpoint() <CR>
 
@@ -66,8 +68,14 @@ let NERDTreeShowHidden=1
 " endif
 " 
 " let g:completor_python_binary = g:env_python_binary_path
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:vimfiles_dir = ""
+if has("win32") || has("win64")
+	let g:vimfiles_dir = $VIM . "/vimfiles"
+else
+	let g:vimfiles_dir="~/.vim"
+endif
+let g:ycm_global_ycm_extra_conf = g:vimfiles_dir . "/.ycm_extra_conf.py"
+set runtimepath^="&g:vimfiles_dir/ctrlp.vim"
 
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
