@@ -10,6 +10,7 @@ set visualbell t_vb=
 set guifont=IBM\ Plex\ Mono:h14
 set guioptions -=m
 set guioptions -=T
+set encoding=utf-8
 
 if $TERM == "xterm" || $TERM == "screen"
 	set t_Co=256
