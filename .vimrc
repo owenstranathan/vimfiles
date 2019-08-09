@@ -1,7 +1,6 @@
 set number
 set nocompatible
 set tags=tags
-" set path+=**
 set mouse=a
 set visualbell t_vb=
 set encoding=utf-8
@@ -9,12 +8,12 @@ set backspace=indent,eol,start
 set exrc
 set secure
 
-if $TERM == "xterm" || $TERM == "screen"
-	set t_Co=256
-	set t_ut=
-elseif $TERM == "cygwin"
-	set t_Co=16
-endif
+"if $TERM == "xterm" || $TERM == "screen"
+"	set t_Co=256
+"	set t_ut=
+"elseif $TERM == "cygwin"
+"	set t_Co=16
+"endif
 
 syntax on
 
@@ -37,12 +36,12 @@ function! g:Breakpoint()
   endif
 endfunction
 
-"
 nnoremap <C-\> :NERDTreeToggle<CR>
 nnoremap ,break :call Breakpoint() <CR>
 
 " ALE
-let g:ale_set_highlights = 1
+" let g:ale_set_highlights = 1
+let g:ale_enabled=0
 
 " NERDTree
 let NERDTreeShowHidden=0

@@ -1,4 +1,5 @@
-set guifont=IBM\ Plex\ Mono:h14
+"set guifont=IBM\ Plex\ Mono:h14
+set guifont=Consolas:h11
 set guioptions -=m
 set guioptions -=T
 " let g:ycm_filetype_blacklist = {
@@ -6,8 +7,8 @@ set guioptions -=T
 "       \ 'hpp': 1,
 "       \}
 
-colorscheme codedark
+colorscheme owiewestside
 
 " AIRLINE
-let g:airline_theme = 'codedark'
+" let g:airline_theme = 'codedark'
 
