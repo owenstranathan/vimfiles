@@ -18,4 +18,7 @@ highlight LineNr     guifg=#f9f1a5			gui=NONE
 highlight Type 	     guifg=#15c60d			gui=NONE
 highlight Constant   guifg=#b4009e			gui=NONE
 highlight Include    guifg=#3b78ff			gui=NONE
+highlight NonText    guifg=#3b78ff			gui=NONE
+highlight PreProc    guifg=#3b78ff 		 	gui=NONE
+highlight Todo 	     guifg=Black	guibg=#f9f1a5 	gui=NONE
 " To be continued
