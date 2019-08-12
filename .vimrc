@@ -7,6 +7,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set exrc
 set secure
+set laststatus=2
 
 colorscheme owiewestside
 
@@ -63,6 +64,11 @@ let g:ycm_log_level = 'debug'
 set runtimepath^="&g:vimfiles_dir/ctrlp.vim"
 let g:ctrp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPMixed'
+
+" Lightline
+let g:lightline = {
+	\'colorscheme': '16color',
+	\}
 
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
