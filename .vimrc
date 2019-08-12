@@ -8,12 +8,14 @@ set backspace=indent,eol,start
 set exrc
 set secure
 
-"if $TERM == "xterm" || $TERM == "screen"
-"	set t_Co=256
-"	set t_ut=
+colorscheme owiewestside
+
+if $TERM == "xterm" || $TERM == "screen" || $TERM == "xterm-256color"
+	set t_Co=256
+	set t_ut=
 "elseif $TERM == "cygwin"
-"	set t_Co=16
-"endif
+	"set t_Co=16
+endif
 
 syntax on
 

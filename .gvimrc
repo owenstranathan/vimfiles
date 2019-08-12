@@ -1,5 +1,8 @@
-"set guifont=IBM\ Plex\ Mono:h14
-set guifont=Consolas:h11
+if has("win32")
+	set guifont=Consolas:h11
+else
+	set guifont=IBM\ Plex\ Mono:h14
+endif
 set guioptions -=m
 set guioptions -=T
 " let g:ycm_filetype_blacklist = {
