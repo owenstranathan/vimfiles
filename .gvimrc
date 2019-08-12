@@ -1,7 +1,12 @@
-"set guifont=IBM\ Plex\ Mono:h14
-set guifont=Consolas:h11
-set guioptions -=m
-set guioptions -=T
+if has("win32")
+	set guifont=Consolas:h11
+else
+	set guifont=IBM\ Plex\ Mono:h14
+endif
+" set guioptions -=m
+" set guioptions -=T
+" set guioptions -=L
+set guioptions=Ac
 " let g:ycm_filetype_blacklist = {
 "       \ 'cpp': 1,
 "       \ 'hpp': 1,

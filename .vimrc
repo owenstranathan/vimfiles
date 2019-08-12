@@ -8,20 +8,22 @@ set backspace=indent,eol,start
 set exrc
 set secure
 set splitright  " yeah!
+set laststatus=2
 
-"if $TERM == "xterm" || $TERM == "screen"
-"	set t_Co=256
-"	set t_ut=
+colorscheme owiewestside
+
+if $TERM == "xterm" || $TERM == "screen" || $TERM == "xterm-256color"
+	set t_Co=256
+	set t_ut=
 "elseif $TERM == "cygwin"
-"	set t_Co=16
-"endif
+	"set t_Co=16
+endif
 
 syntax on
 
 execute pathogen#infect()
 
 autocmd Filetype python setlocal tabstop=4
-" autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -31,21 +33,26 @@ let s:breakpoints = {
 \}
 
 function! g:Breakpoint()
-  if has_key(s:breakpoints, &filetype)
-    let filename = "$HOME/.vim/snippets/" . &filetype . "/breakpoint"
-    execute "-1read " . filename
-  endif
+	if has_key(s:breakpoints, &filetype)
+		let filename = "$HOME/.vim/snippets/" . &filetype . "/breakpoint"
+		execute "-1read " . filename
+	endif
 endfunction
 
+" NERDTree
+if has("macunix")
+	nnoremap « :NERDTree .<CR>
+else
+	nnoremap <M-\> :NERDTree .<CR>
+endif
 nnoremap <C-\> :NERDTreeToggle<CR>
 nnoremap ,break :call Breakpoint() <CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.swp$'] " vim is almost perfect, but for .swp files
 
 " ALE
 " let g:ale_set_highlights = 1
-let g:ale_enabled=0
-
-" NERDTree
-let NERDTreeShowHidden=0
+let g:ale_enabled=0 " ALE fucks with YCM on windows gvim (dunno why)
 
 " YouCompleteMe
 let g:vimfiles_dir = ""
@@ -63,6 +70,11 @@ set runtimepath^="&g:vimfiles_dir/ctrlp.vim"
 let g:ctrp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPMixed'
 
+" Lightline
+let g:lightline = {
+	\'colorscheme': 'default',
+	\}
+
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
 nnoremap <F6> :!make both<cr>
@@ -70,10 +82,13 @@ nnoremap <F6> :!make both<cr>
 filetype plugin on
 
 " Fuck whitespace
-nnoremap    <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Calendar (if I have it)
+let g:calendar_google_calendar=1
