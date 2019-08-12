@@ -23,7 +23,6 @@ syntax on
 execute pathogen#infect()
 
 autocmd Filetype python setlocal tabstop=4
-" autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -33,21 +32,26 @@ let s:breakpoints = {
 \}
 
 function! g:Breakpoint()
-  if has_key(s:breakpoints, &filetype)
-    let filename = "$HOME/.vim/snippets/" . &filetype . "/breakpoint"
-    execute "-1read " . filename
-  endif
+	if has_key(s:breakpoints, &filetype)
+		let filename = "$HOME/.vim/snippets/" . &filetype . "/breakpoint"
+		execute "-1read " . filename
+	endif
 endfunction
 
+" NERDTree
+if has("macunix")
+	nnoremap « :NERDTree .<CR>
+else
+	nnoremap <M-\> :NERDTree .<CR>
+endif 
 nnoremap <C-\> :NERDTreeToggle<CR>
 nnoremap ,break :call Breakpoint() <CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.swp$'] " vim is almost perfect, but for .swp files
 
 " ALE
 " let g:ale_set_highlights = 1
-let g:ale_enabled=0
-
-" NERDTree
-let NERDTreeShowHidden=0
+let g:ale_enabled=0 " ALE fucks with YCM on windows gvim (dunno why)
 
 " YouCompleteMe
 let g:vimfiles_dir = ""
@@ -67,7 +71,7 @@ let g:ctrlp_cmd='CtrlPMixed'
 
 " Lightline
 let g:lightline = {
-	\'colorscheme': '16color',
+	\'colorscheme': 'default',
 	\}
 
 nnoremap <F4> :make!<cr>
@@ -76,5 +80,5 @@ nnoremap <F6> :!make both<cr>
 
 filetype plugin on
 
-nnoremap    <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
-
+nnoremap		<F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+let g:calendar_google_calendar=1
