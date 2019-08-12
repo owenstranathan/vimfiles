@@ -7,6 +7,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set exrc
 set secure
+set splitright  " yeah!
 
 "if $TERM == "xterm" || $TERM == "screen"
 "	set t_Co=256
@@ -68,5 +69,11 @@ nnoremap <F6> :!make both<cr>
 
 filetype plugin on
 
+" Fuck whitespace
 nnoremap    <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
-
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
