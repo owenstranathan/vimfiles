@@ -75,20 +75,20 @@ let g:lightline = {
 	\'colorscheme': 'default',
 	\}
 
+" make things
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
 nnoremap <F6> :!make both<cr>
 
-filetype plugin on
+filetype plugin on " I don't know why this is here but I remember putting it here and I'm scared to delete
 
-" Fuck whitespace
+" whitespace
 nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
 " Calendar (if I have it)
 let g:calendar_google_calendar=1
+
+" Todo
+let g:todo_directory="D:\code\owenstranathan\todo"
+
+nnoremap Q <Nop>
