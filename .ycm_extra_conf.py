@@ -23,7 +23,6 @@ if sys.platform == "win32":
     if os.path.exists(sfml_path):
         flags.extend([
             '-I', sfml_path, "-DSFML_STATIC"])
-    
 
 
 # youcompleteme is calling this function to get flags
