@@ -23,11 +23,15 @@ if sys.platform == "win32":
     # TODO: figure out how to read this from a project level config, I'm sure there is a really easy(existing) way to do this
     sfml_path = 'D:\\libs\\SFML-2.5.1\\include'
     imgui_sfml_path = 'D:\\libs\\ImGui-SFML\\include'
+    glm_path = 'D:\\code\\g-truc\\glm'
+
     if os.path.exists(sfml_path):
         flags.extend([
             '-I', sfml_path, "-DSFML_STATIC"])
     if os.path.exists(imgui_sfml_path):
         flags.extend(['-I', imgui_sfml_path, "-DSFML_STATIC"])
+    if os.path.exists(glm_path):
+        flags.extend(['-I', glm_path])
 
 
 # youcompleteme is calling this function to get flags
