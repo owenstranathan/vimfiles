@@ -92,3 +92,5 @@ let g:calendar_google_calendar=1
 let g:todo_directory="D:\code\owenstranathan\todo"
 
 nnoremap Q <Nop>
+
+let g:make_no_commands=1

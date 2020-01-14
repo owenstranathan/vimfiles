@@ -21,6 +21,7 @@ highlight Constant 		guifg=#b4009e					gui=NONE
 highlight Include		guifg=#3b78ff					gui=NONE
 highlight NonText		guifg=#3b78ff					gui=NONE
 highlight PreProc		guifg=#3b78ff 		 			gui=NONE
+highlight Special		guifg=#ffa336					gui=NONE
 highlight Todo			guifg=Black		guibg=#f9f1a5 	gui=NONE
 
 " Fuck whitespace
