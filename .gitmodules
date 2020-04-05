@@ -22,3 +22,6 @@
 	path = bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 	ignore=dirty
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = git@github.com:tpope/vim-surround.git
