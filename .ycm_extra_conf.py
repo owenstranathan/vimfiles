@@ -1,23 +1,24 @@
 import os
 import re
+import sys
 import subprocess
 import ycm_core
 
 def LoadSystemIncludes():
-    regex = re.compile(ur'(?:\#include \<...\> search starts here\:)(?P<list>.*?)(?:End of search list)', re.DOTALL);
-    process = subprocess.Popen(['clang', '-v', '-E', '-x', 'c++', '-'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
-    process_out, process_err = process.communicate('');
-    output = process_out + process_err;
-    includes = [];
+    regex = re.compile(r'(?:\#include \<...\> search starts here\:)(?P<list>.*?)(?:End of search list)', re.DOTALL)
+    process = subprocess.Popen(['clang', '-v', '-E', '-x', 'c++', '-'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process_out, process_err = process.communicate('')
+    output = process_out + process_err
+    includes = []
     for p in re.search(regex, output).group('list').split('\n'):
-        p = p.strip();
+        p = p.strip()
         if len(p) > 0 and p.find('(framework directory)') < 0:
-            includes.append('-isystem');
-            includes.append(p);
-    return includes;
+            includes.append('-isystem')
+            includes.append(p)
+    return includes
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
-scriptPath = os.path.dirname(os.path.abspath(__file__));
+scriptPath = os.path.dirname(os.path.abspath(__file__))
 compilation_database_folder = os.path.join(scriptPath, 'build')
 database = None if not os.path.exists(compilation_database_folder) else ycm_core.CompilationDatabase(compilation_database_folder)
 
