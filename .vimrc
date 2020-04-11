@@ -98,5 +98,6 @@ nnoremap Q <Nop>
 
 let g:make_no_commands=1
 
-command Todo tabe D:\todo.txt
+
+command Todo tabe D:\todo.todo
 
