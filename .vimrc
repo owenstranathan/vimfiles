@@ -39,34 +39,10 @@ function! g:Breakpoint()
 	endif
 endfunction
 
-" NERDTree
-if has("macunix")
-	nnoremap « :NERDTree .<CR>
-else
-	nnoremap <M-\> :NERDTree .<CR>
-endif
-nnoremap <C-\> :NERDTreeToggle<CR>
-nnoremap ,break :call Breakpoint() <CR>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.swp$'] " vim is almost perfect, but for .swp files
 
 " ALE
 " let g:ale_set_highlights = 1
 let g:ale_enabled=0 " ALE fucks with YCM on windows gvim (dunno why)
-
-" YouCompleteMe
-let g:vimfiles_dir = ""
-if has("win32") || has("win64")
-	let g:vimfiles_dir = $VIM . "/vimfiles"
-else
-	let g:vimfiles_dir="~/.vim"
-endif
-let g:ycm_global_ycm_extra_conf = g:vimfiles_dir . "/.ycm_extra_conf.py"
-" let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_log_level = 'debug'
-if has("win32")
-	let g:ycm_show_diagnostics_ui = 0
-endif
 
 " CtrlP
 set runtimepath^="&g:vimfiles_dir/ctrlp.vim"
@@ -83,21 +59,19 @@ nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
 nnoremap <F6> :!make both<cr>
 
-filetype plugin on " I don't know why this is here but I remember putting it here and I'm scared to delete
+filetype plugin on " causes files in ~/.vim/ftplugin to be loaded
 
-" whitespace
+" F2 toggles showing EOL with '$'
 nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Calendar (if I have it)
 let g:calendar_google_calendar=1
 
-" Todo
-let g:todo_directory="D:\code\owenstranathan\todo"
-
+" Turns off Ex-mode shortcut. You can still use gQ to get to Ex-mode
 nnoremap Q <Nop>
 
+" see :help ft-make-syntax
 let g:make_no_commands=1
-
 
 command Todo tabe D:\todo.todo
 
