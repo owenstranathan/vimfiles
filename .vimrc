@@ -74,6 +74,18 @@ nnoremap Q <Nop>
 " see :help ft-make-syntax
 let g:make_no_commands=1
 
-command Todo e D:\todo.todo
+" Todo
+let g:todo_path = "D:/todo.todo"
+command Todo :call OpenTodo(g:todo_path)
+" type Td to open todo file given by g:todo_path
 nnoremap <S-t>d :Todo<cr>
+function! OpenTodo(path)
+	if bufexists(a:path)
+		execute ":b " . bufnr(a:path)
+	else
+		execute ":e " . a:path
+	endif
+endfunction
 
+" netrw
+let g:netrw_list_hide= '.*\.swp$'
