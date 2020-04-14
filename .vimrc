@@ -59,7 +59,8 @@ nnoremap <F4> :make!<cr>
 nnoremap <F5> :!make run<cr>
 nnoremap <F6> :!make both<cr>
 
-filetype plugin on " causes files in ~/.vim/ftplugin to be loaded
+" causes files in ~/.vim/ftplugin to be loaded
+filetype plugin on
 
 " F2 toggles showing EOL with '$'
 nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
@@ -73,5 +74,6 @@ nnoremap Q <Nop>
 " see :help ft-make-syntax
 let g:make_no_commands=1
 
-command Todo tabe D:\todo.todo
+command Todo e D:\todo.todo
+nnoremap <S-t>d :Todo<cr>
 
