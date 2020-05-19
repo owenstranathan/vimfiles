@@ -87,5 +87,19 @@ function! OpenTodo(path)
 	endif
 endfunction
 
+
+" Todo
+let g:notes_path = "D:/notes.txt"
+command Notes :call OpenNotes(g:notes_path)
+" type Td to open todo file given by g:todo_path
+nnoremap <S-n>t :Notes<cr>
+function! OpenNotes(path)
+	if bufexists(a:path)
+		execute ":b " . bufnr(a:path)
+	else
+		execute ":e " . a:path
+	endif
+endfunction
+
 " netrw
 let g:netrw_list_hide= '.*\.swp$'
