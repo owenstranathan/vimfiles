@@ -1,6 +1,8 @@
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
+set autoindent
+set smartindent
 
 syn keyword	cTodo		contained TODO FIXME OPTMZ NOTE XXX
 if has("win32") || has("win64")
