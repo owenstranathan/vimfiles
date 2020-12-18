@@ -9,6 +9,12 @@ set exrc
 set secure
 set splitright  " yeah!
 set laststatus=2
+if has("win32") || has("win64")
+	let g:vimfiles_dir = $VIM . "/vimfiles"
+else
+	let g:vimfiles_dir="~/.vim"
+endif
+set runtimepath^="&g:vimfiles_dir"
 
 colorscheme owiewestside
 
@@ -26,8 +32,6 @@ execute pathogen#infect()
 autocmd Filetype python setlocal tabstop=4
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-
 let s:breakpoints = {
 \  "python": "import pdb; pdb.set_trace"
 \}
@@ -75,7 +79,7 @@ nnoremap Q <Nop>
 let g:make_no_commands=1
 
 " Todo
-let g:todo_path = "D:/todo.todo"
+let g:todo_path = "$HOME/todo.todo"
 command Todo :call OpenTodo(g:todo_path)
 " type Td to open todo file given by g:todo_path
 nnoremap <S-t>d :Todo<cr>
@@ -88,12 +92,25 @@ function! OpenTodo(path)
 endfunction
 
 
-" Todo
-let g:notes_path = "D:/notes.txt"
+" Notes
+let g:notes_path = "$HOME/notes.txt"
 command Notes :call OpenNotes(g:notes_path)
 " type Td to open todo file given by g:todo_path
 nnoremap <S-n>t :Notes<cr>
 function! OpenNotes(path)
+	if bufexists(a:path)
+		execute ":b " . bufnr(a:path)
+	else
+		execute ":e " . a:path
+	endif
+endfunction
+
+" Scratch
+let g:scratch_path = "$HOME/scratch.txt"
+command Scratch :call OpenScratch(g:scratch_path)
+"type Sc to open scratch file given by g:scratch_path
+nnoremap <S-s>c :Scratch<cr>
+function! OpenScratch(path)
 	if bufexists(a:path)
 		execute ":b " . bufnr(a:path)
 	else
