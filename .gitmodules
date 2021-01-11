@@ -1,14 +1,14 @@
 [submodule "bundle/ctrlp.vim"]
-	path = bundle/ctrlp.vim
+	path = pack/plugins/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 	ignore=dirty
 [submodule "bundle/lightline.vim"]
-	path = bundle/lightline.vim
+	path = pack/plugins/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 	ignore=dirty
 [submodule "bundle/surround"]
-	path = bundle/surround
+	path = pack/plugins/start/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/vim-vinegar"]
-	path = bundle/vim-vinegar
+	path = pack/plugins/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
