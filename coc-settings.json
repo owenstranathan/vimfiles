@@ -1,0 +1,17 @@
+{
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠",
+    "diagnostic.infoSign": "i",
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.enableSign": true,
+    "signature.target": "echo",
+    "languageserver": {
+        "godot": {
+            "host": "127.0.0.1",
+            "filetypes": ["gdscript"],
+            "port": 6008
+        }
+    },
+    "coc.source.around.firstMatch": false,
+    "coc.source.buffer.firstMatch": false
+}
